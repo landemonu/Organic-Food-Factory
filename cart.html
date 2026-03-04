@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vegetable Store</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f8f8f8;
+    }
+    header {
+        background: #28a745;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    header h1 {
+        margin: 0;
+    }
+    .cart {
+        cursor: pointer;
+        position: relative;
+    }
+    .cart span {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: red;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+    }
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+    .product {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        width: 200px;
+        text-align: center;
+    }
+    .product img {
+        max-width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+    .product h3 {
+        margin: 10px 0 5px;
+    }
+    .product p {
+        color: green;
+        font-weight: bold;
+    }
+    .product button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .cart-details {
+        padding: 20px;
+        background: white;
+        border-top: 2px solid #ccc;
+    }
+    
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Vegetable Store</h1>
+    <div class="cart" onclick="toggleCart()">
+        🛒 Cart <span id="cart-count">0</span>
+    </div>
+   
+</header>
+
+<div class="products" id="product-list">
+    <div class="product">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Tomato_je.jpg" alt="Tomato">
+        <h3>Tomato</h3>
+        <p>₹30 / kg</p>
+        <button onclick="addToCart('Tomato', 30)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Carrots.JPG" alt="Carrot">
+        <h3>Carrot</h3>
+        <p>₹40 / kg</p>
+        <button onclick="addToCart('Carrot', 40)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Capsicum_green.jpg" alt="Capsicum">
+        <h3>Capsicum</h3>
+        <p>₹50 / kg</p>
+        <button onclick="addToCart('Capsicum', 50)">Add to Cart</button>
+    </div>
+</div>
+
+<div class="cart-details" id="cart-details" style="display:none;">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <h3>Total: ₹<span id="cart-total">0</span></h3>
+</div>
+
+
+<script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price) {
+        cart.push({name, price});
+        total += price;
+        document.getElementById('cart-count').innerText = cart.length;
+        updateCartDetails();
+    }
+
+    function updateCartDetails() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = "";
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name} - ₹${item.price}`;
+            cartItems.appendChild(li);
+        });
+        document.getElementById('cart-total').innerText = total;
+    }
+
+    function toggleCart() {
+        const cartDiv = document.getElementById('cart-details');
+        cartDiv.style.display = cartDiv.style.display === "none" ? "block" : "none";
+    }
+    
+</script>
+
+</body>
+</html>

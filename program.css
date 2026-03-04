@@ -1,0 +1,246 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(#cae3cb, green);
+    font-weight: 20px;
+
+}
+header .logo img {
+    height: 50px;
+}
+
+header .login img {
+    height: 40px;
+}
+
+header select {
+    height: 35px;
+    width: 80px;
+    background: rgba(128, 128, 128, 0.651);
+}
+
+header #search {
+    height: 35px;
+    width: 900px;
+    padding-left: 10px;
+    border-radius: 4px;
+}
+header button {
+    height: 35px;
+    background: rgba(128, 128, 128, 0.685);
+    border-radius: 4px;
+}
+
+.hero {
+    display: flex;
+    height: 750px;
+    margin-top: 2px;
+}
+.hero:hover {
+    transform: translateY(-5px);
+    transition: 2sec;
+}
+.contact-info h2{
+    text-align: justify;
+    padding: 10px;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+    justify-content: center;
+    width: auto;
+}
+
+.contact-info .map {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 350px;
+    max-width: 500px;
+}
+
+.contact-info h2 {
+    color: #4caf50;
+    margin-bottom: 1rem;
+
+}
+
+.map h2 {
+    color: #4caf50;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+iframe {
+    width: 450px;
+    border: none;
+    border-radius: 10px;
+    height: 250px;
+    margin-top: 1rem;
+}
+
+
+.main {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(247, 236, 216, 0.705);
+}
+
+.main h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #f1f8e9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    transition: 2sec
+}
+
+.card h3 {
+    margin-bottom: 0.5px;
+    color: #2e7d32;
+}
+
+.card img {
+    height: 200px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7fdf7;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 1rem;
+    background-color: #cbcbcb;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+ul li {
+    position: relative;
+    gap: 2px;
+    padding: 0px 50px;
+}
+
+ul li a {
+    display: block;
+    padding: 1rem;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-size: 19px;
+}
+
+ul li a:hover {
+    background-color: #eac3e8;
+    text-decoration: underline;
+}
+/* DROPDOWN */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.dropdown a {
+    color: #333;
+    padding: 0.75rem 1rem;
+}
+
+.dropdown a:hover {
+    background-color: #f2f2f2;
+}
+
+/* SHOW DROPDOWN ON HOVER */
+li:hover .dropdown {
+    display: block;
+}
+.cart-icon {
+    position: relative;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.cart-icon .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+.Footers {
+    display: block;
+    gap: 15px;
+    /* margin-top: 20px; */
+    background: linear-gradient(#cae3cb, green);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* padding: 15px; */
+}
+
+.Footer a {
+    text-decoration: none;
+    color: white;
+    /* background-color: #333; */
+    padding: 10px;
+}
+.footer .p{
+    padding-top: 20px;
+}
+.Footer a:hover {
+    /* background-color: #555; */
+    transition: background 0.3s;
+}

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrganicFoodFactory</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        /* background-color:linear-gradient(#cae3cb);  */
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 10px;
+        background: linear-gradient(#cae3cb, green);
+        font-weight: 20px;
+
+    }
+
+    header .logo img {
+        height: 50px;
+    }
+
+    header .login img {
+        height: 40px;
+    }
+
+    header select {
+        height: 35px;
+        width: 80px;
+        background: rgba(128, 128, 128, 0.651);
+    }
+
+    header #search {
+        height: 35px;
+        width: 900px;
+        padding-left: 10px;
+        border-radius: 4px;
+    }
+
+    header button {
+        height: 35px;
+        background: rgba(128, 128, 128, 0.685);
+        border-radius: 4px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1500px;
+        margin: auto;
+        padding: 0 1rem;
+        background-color: #cbcbcb;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    ul li {
+        position: relative;
+        gap: 2px;
+        padding: 0px 50px;
+    }
+
+    ul li a {
+        display: block;
+        padding: 1rem;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+        font-size: 19px;
+    }
+
+    ul li a:hover {
+        background-color: #eac3e8;
+        text-decoration: underline;
+    }
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 180px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 100;
+    }
+
+    .dropdown a {
+        color: #333;
+        padding: 0.75rem 1rem;
+    }
+
+    .dropdown a:hover {
+        background-color: #f2f2f2;
+    }
+
+    /* SHOW DROPDOWN ON HOVER */
+    li:hover .dropdown {
+        display: block;
+    }
+
+    .cart-icon {
+        position: relative;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .cart-icon .cart-count {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: red;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+    }
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CONTACT SECTION */
+
+.contact-container{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:50px 20px;
+    background:#f4f4f4;
+}
+
+/* CONTACT INFO */
+
+.contact-info{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+.contact-info h2{
+    color:#2e7d32;
+    margin-bottom:15px;
+}
+
+.contact-info p{
+    margin:10px 0;
+    line-height:1.6;
+}
+
+/* CONTACT FORM */
+
+.contact-form{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form h2{
+    color:#2e7d32;
+    margin-bottom:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.contact-form button{
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.contact-form button:hover{
+    background:#1b5e20;
+}
+
+/* MAP */
+.map iframe{
+    width:100%;
+    height:450px;
+    border:0;
+    border-radius:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+    .contact-container{
+        padding:30px 15px;
+    }
+}
+   /* FOOTER */
+
+footer{
+    background: linear-gradient(to right,#2e7d32,#1b5e20);
+    color:white;
+    margin-top:40px;
+}
+
+.Footers{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+/* Social Icons */
+
+.Footer.social a{
+    display:inline-block;
+    margin:0 8px;
+}
+
+.Footer.social img{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.Footer.social img:hover{
+    transform:scale(1.2);
+    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Copyright */
+
+.Footer.copy p{
+    font-size:14px;
+    opacity:0.9;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .Footer.copy p{
+        text-align:center;
+        font-size:13px;
+    }
+
+}
+    
+</style>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./Photos/Home/wheat.png" alt="" hight="5px"> <b>Organic Food Factory</b>
+        </div>
+
+        <div class="search">
+            <input type="search" name="search" id="search">
+            <button>search</button>
+        </div>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">2</span>
+        </div>
+        <div class="login">
+            <img src="/Photos/Home/user.png" alt="" height="3px"> <br><b>User</b>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="program.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="our story.html">Our Story</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Registration ▾</a>
+                <div class="dropdown">
+                    <a href="Registraion Farmer.html">Farmer Login</a>
+                    <a href="Registraion Admin.html">Admin Login</a>
+                    <a href="Registraion User.html">User Login</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    </header>
+<section id="contact" class="contact-container">
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+        <h2>Our Contact Details</h2>
+
+        <p><strong>Address:</strong> Green Valley Road, Pune, India</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Email:</strong> hello@organicfoodfactory.com</p>
+
+        <p>
+            We are always happy to hear from you. 
+            Feel free to contact us for any questions about our products.
+        </p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h2>Send Message</h2>
+
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="text" placeholder="Subject">
+            <textarea rows="5" placeholder="Your Message"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Map -->
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609787637!2d72.74109998359373!3d18.5204303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf8c4e6d54f7%3A0x8cd54f6fedead3!2sPune!5e0!3m2!1sen!2sin!4v1620000000000"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
+ <footer>
+    <div class="Footers">
+
+        <div class="Footer social">
+            <a href="#"><img src="./Photos/Gmail.jpg" alt="Gmail"></a>
+            <a href="#"><img src="./Photos/Facebook.jpg" alt="Facebook"></a>
+            <a href="#"><img src="./Photos/Twitter.jpg" alt="Twitter"></a>
+            <a href="#"><img src="./Photos/youtube.jpg" alt="YouTube"></a>
+        </div>
+
+        <div class="Footer copy">
+            <p>© 2025 Organic Food Factory | All Rights Reserved</p>
+        </div>
+
+    </div>
+</footer>
+   
+</body>
+
+</html>

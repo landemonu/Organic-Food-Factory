@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: #f4f4f4;
+      }
+
+      /* HEADER */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: linear-gradient(to right, #9be15d, #00c853);
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+      }
+
+      .logo img {
+        width: 40px;
+      }
+
+      .search {
+        display: flex;
+        gap: 10px;
+      }
+
+      .search input {
+        padding: 6px;
+        width: 600px;
+      }
+
+      .login {
+        text-align: center;
+      }
+
+      .login img {
+        width: 35px;
+      }
+
+      /* NAVBAR */
+      nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1500px;
+        margin: auto;
+        padding: 0 1rem;
+        background-color: #cbcbcb;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      ul li {
+        position: relative;
+        gap: 2px;
+        padding: 0px 50px;
+      }
+
+      ul li a {
+        display: block;
+        padding: 1rem;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+        font-size: 19px;
+      }
+
+      ul li a:hover {
+        background-color: #eac3e8;
+        text-decoration: underline;
+      }
+      /* DROPDOWN */
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        min-width: 180px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 100;
+      }
+
+      .dropdown a {
+        color: #333;
+        padding: 0.75rem 1rem;
+      }
+
+      .dropdown a:hover {
+        background-color: #f2f2f2;
+      }
+
+      /* SHOW DROPDOWN ON HOVER */
+      li:hover .dropdown {
+        display: block;
+      }
+
+      .cart-icon {
+        position: relative;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .cart-icon .cart-count {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: red;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+      }
+
+      /* CONTAINER */
+      .container {
+        min-height: 80vh;
+        background: url("./Photos/Green beg.jpg") center/cover no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      /* FORM */
+      .form-box {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        color: white;
+      }
+
+      .form-box h2 {
+        margin-bottom: 15px;
+      }
+
+      .form-box input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 8px;
+      }
+
+      .form-box button {
+        background: #00e676;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      .form-box button:hover {
+        background: #00c853;
+        color: white;
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+        }
+
+        .search input {
+          width: 300px;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      /* FOOTER */
+
+footer{
+    background: linear-gradient(to right,#2e7d32,#1b5e20);
+    color:white;
+    margin-top:40px;
+}
+
+.Footers{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+/* Social Icons */
+
+.Footer.social a{
+    display:inline-block;
+    margin:0 8px;
+}
+
+.Footer.social img{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.Footer.social img:hover{
+    transform:scale(1.2);
+    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Copyright */
+
+.Footer.copy p{
+    font-size:14px;
+    opacity:0.9;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .Footer.copy p{
+        text-align:center;
+        font-size:13px;
+    }
+
+}
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./Photos/Home/wheat.png" />
+        Organic Food Factory
+      </div>
+
+      <div class="search">
+        <input type="search" placeholder="Search" />
+        <button>Search</button>
+      </div>
+       <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+      <div class="login">
+        <img src="./Photos/Home/user.png" /><br />
+        User
+      </div>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="program.html">Home</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="our story.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="#">Registration ▾</a>
+          <div class="dropdown">
+            <a href="Registraion Farmer.html">Farmer Login</a>
+            <a href="Registraion Admin.html">Admin Login</a>
+            <a href="Registraion User.html">User Login</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="form-box">
+        <h2>User Registraion Form</h2>
+        <input type="text" placeholder="Enter Name">
+        <input type="email" placeholder="Enter Email">
+        <input type="text" placeholder="Enter Mobile">
+        <input type="text" placeholder="Enter Address">
+        <input type="text" placeholder="Enter Pin">
+        <button>Submit</button>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="Footers">
+
+        <div class="Footer social">
+            <a href="#"><img src="./Photos/Gmail.jpg" alt="Gmail"></a>
+            <a href="#"><img src="./Photos/Facebook.jpg" alt="Facebook"></a>
+            <a href="#"><img src="./Photos/Twitter.jpg" alt="Twitter"></a>
+            <a href="#"><img src="./Photos/youtube.jpg" alt="YouTube"></a>
+        </div>
+
+        <div class="Footer copy">
+            <p>© 2025 Organic Food Factory | All Rights Reserved</p>
+        </div>
+
+    </div>
+</footer>
+  
+</html>

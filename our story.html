@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Organic Food Factory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(#cae3cb, green);
+            font-weight: 20px;
+
+        }
+
+        header .logo img {
+            height: 50px;
+        }
+
+        header .login img {
+            height: 40px;
+        }
+
+        header select {
+            height: 35px;
+            width: 80px;
+            background: rgba(128, 128, 128, 0.651);
+        }
+
+        header #search {
+            height: 35px;
+            width: 900px;
+            padding-left: 10px;
+            border-radius: 4px;
+        }
+
+        header button {
+            height: 35px;
+            background: rgba(128, 128, 128, 0.685);
+            border-radius: 4px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 1500px;
+            margin: auto;
+            padding: 0 1rem;
+            background-color: #cbcbcb;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            position: relative;
+            gap: 2px;
+            padding: 0px 50px;
+        }
+
+        ul li a {
+            display: block;
+            padding: 1rem;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 19px;
+        }
+
+        ul li a:hover {
+            background-color: #eac3e8;
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .dropdown a {
+            color: #333;
+            padding: 0.75rem 1rem;
+        }
+
+        .dropdown a:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* SHOW DROPDOWN ON HOVER */
+        li:hover .dropdown {
+            display: block;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .cart-icon .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* Slider */
+        .slider {
+            position: relative;
+            /* width: 100%; */
+            height: 400px;
+            overflow: hidden;
+            border: 2px solid;
+            box-shadow : 4px 4px 10px 4px green;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 700px;
+            object-fit: fill;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .caption {
+                font-size: 0.9rem;
+                left: 30px;
+                right: 20px;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 2rem;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        /* Vision & Mission */
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .vision-mission div {
+            background: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Journey Timeline */
+        .timeline {
+            border-left: 3px solid #4CAF50;
+            padding-left: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item h3 {
+            color: #4CAF50;
+        }
+
+        /* Video Section */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            /* border: 2px solid; */
+        }
+
+        .video-container:hover {
+            transform: matrix(-2s);
+        }
+
+        /* video {
+                width: 100%;
+                max-width: 800px;
+                border-radius: 10px;
+            } */
+
+        /* Footer */
+/* FOOTER */
+
+footer{
+    background: linear-gradient(to right,#2e7d32,#1b5e20);
+    color:white;
+    margin-top:40px;
+}
+
+.Footers{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+/* Social Icons */
+
+.Footer.social a{
+    display:inline-block;
+    margin:0 8px;
+}
+
+.Footer.social img{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.Footer.social img:hover{
+    transform:scale(1.2);
+    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Copyright */
+
+.Footer.copy p{
+    font-size:14px;
+    opacity:0.9;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .Footer.copy p{
+        text-align:center;
+        font-size:13px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="./Photos/Home/wheat.png" alt="" hight="5px"> <b>Organic Food Factory</b>
+        </div>
+
+        <div class="search">
+            <input type="search" name="search" id="search">
+            <button>search</button>
+        </div>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">2</span>
+        </div>
+        <div class="login">
+            <img src="./Photos/Home/user.png" alt="" height="3px"> <br><b>User</b>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="program.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="our story.html">Our Story</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Registration ▾</a>
+                <div class="dropdown">
+                    <a href="Registraion Farmer.html">Farmer Login</a>
+                    <a href="Registraion Admin.html">Admin Login</a>
+                    <a href="Registraion User.html">User Login</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Automatic Slider -->
+    <section class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="./Photos/Our story/Slider1.jpg" alt="Organic Farming" height="2px">
+                <div class="caption">
+                    <h2>From Seed to Table</h2>
+                    <p>Our journey of pure organic produce.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./Photos/Our story/Slider2.jpg" alt="Farmers at work" height="50px">
+                <div class="caption">
+                    <h2>Empowering Farmers</h2>
+                    <p>We work hand in hand with local farmers.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./Photos/Our story/Slider3.jpg" alt="Fresh vegetables" height="5px">
+                <div class="caption">
+                    <h2>Fresh & Healthy</h2>
+                    <p>Bringing health and freshness to your home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section>
+        <h2>Our Story</h2>
+        <p>Organic Food Factory started with a dream to provide fresh, pesticide-free food directly from farms to
+            families. Our roots lie in sustainable agriculture, fair trade, and care for the environment. Today, we work
+            with over 200 local farmers to ensure every product is fresh, nutritious, and chemical-free.</p>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section>
+        <h2>Vision & Mission</h2>
+        <div class="vision-mission">
+            <div>
+                <h3>Our Vision</h3>
+                <p>To be a global leader in providing organic, healthy, and sustainable food products that enhance the
+                    quality of life and protect the environment.</p>
+            </div>
+            <div>
+                <h3>Our Mission</h3>
+                <p>To empower farmers, promote organic farming practices, and deliver high-quality organic products to
+                    consumers while maintaining environmental balance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section>
+        <h2>Our Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>2015</h3>
+                <p>We started as a small community farm, selling fresh vegetables locally.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2017</h3>
+                <p>Collaborated with local farmers and expanded our product range.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2020</h3>
+                <p>Launched our first online organic store, reaching thousands of homes.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2023</h3>
+                <p>Partnered with over 200 farmers, ensuring sustainable and eco-friendly farming.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Clip -->
+    <section>
+        <h2>Watch Our Story</h2>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vDDdZ1JTmgU?si=kKSv1K-ta_Jjxhnw"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer>
+    <div class="Footers">
+
+        <div class="Footer social">
+            <a href="#"><img src="./Photos/Gmail.jpg" alt="Gmail"></a>
+            <a href="#"><img src="./Photos/Facebook.jpg" alt="Facebook"></a>
+            <a href="#"><img src="./Photos/Twitter.jpg" alt="Twitter"></a>
+            <a href="#"><img src="./Photos/youtube.jpg" alt="YouTube"></a>
+        </div>
+
+        <div class="Footer copy">
+            <p>© 2025 Organic Food Factory | All Rights Reserved</p>
+        </div>
+
+    </div>
+</footer>
+    <!-- JavaScript for Automatic Slider -->
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+
+        function changeSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            document.querySelector(".slides").style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        setInterval(changeSlide, 4000);
+    </script>
+
+</body>
+
+</html>

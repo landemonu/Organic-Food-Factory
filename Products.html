@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Organic Food Factory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: center;
+      padding: 10px;
+      background: linear-gradient(#cae3cb, green);
+      font-weight: 20px;
+
+    }
+
+    header .logo img {
+      height: 50px;
+    }
+
+    header .login img {
+      height: 40px;
+    }
+
+    header select {
+      height: 35px;
+      width: 80px;
+      background: rgba(128, 128, 128, 0.651);
+    }
+
+    header #search {
+      height: 35px;
+      width: 900px;
+      padding-left: 10px;
+      border-radius: 4px;
+    }
+
+    header button {
+      height: 35px;
+      background: rgba(128, 128, 128, 0.685);
+      border-radius: 4px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 1500px;
+      margin: auto;
+      padding: 0 1rem;
+      background-color: #cbcbcb;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    ul li {
+      position: relative;
+      gap: 2px;
+      padding: 0px 50px;
+    }
+
+    ul li a {
+      display: block;
+      padding: 1rem;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      font-size: 19px;
+    }
+
+    ul li a:hover {
+      background-color: #eac3e8;
+      text-decoration: underline;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .dropdown a {
+      color: #333;
+      padding: 0.75rem 1rem;
+    }
+
+    .dropdown a:hover {
+      background-color: #f2f2f2;
+    }
+
+    /* SHOW DROPDOWN ON HOVER */
+    li:hover .dropdown {
+      display: block;
+    }
+
+    .cart-icon {
+      position: relative;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .cart-icon .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
+    /* Search and Filter */
+    .filter-bar {
+      background: #f8f8f8;
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .filter-bar input,
+    .filter-bar select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .product-content {
+      padding: 1rem;
+      flex: 1;
+    }
+
+    /* .product-content h3 {
+      color: #4CAF50;
+      margin-bottom: 0.5rem;
+    } */
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .product-content p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .btn {
+      background: #4CAF50;
+      color: white;
+      padding: 0.7rem 1rem;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+
+    }
+
+    .btn:hover {
+      background: #45a049;
+    }
+
+    .cart-details {
+      padding: 20px;
+      background: white;
+      border-top: 2px solid #ccc;
+      /* padding: 20px 40px; */
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+    }
+    .cart-details a{
+       background: #4CAF50;
+      color: white;
+      padding: 0.7rem 1rem;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cart-details a:hover{
+      background: #45a049;
+
+    }
+
+    /* Footer */
+    /* FOOTER */
+
+footer{
+    background: linear-gradient(to right,#2e7d32,#1b5e20);
+    color:white;
+    margin-top:40px;
+}
+
+.Footers{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+/* Social Icons */
+
+.Footer.social a{
+    display:inline-block;
+    margin:0 8px;
+}
+
+.Footer.social img{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.Footer.social img:hover{
+    transform:scale(1.2);
+    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Copyright */
+
+.Footer.copy p{
+    font-size:14px;
+    opacity:0.9;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .Footer.copy p{
+        text-align:center;
+        font-size:13px;
+    }
+
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="./Photos/Home/wheat.png" alt="" hight="5px"> <b>Organic Food Factory</b>
+    </div>
+
+    <div class="search">
+      <input type="search" name="search" id="search">
+      <button>search</button>
+    </div>
+    <div class="cart-icon" onclick="toggleCart()">
+      <a href="#cart-details"><i class="fas fa-shopping-cart"></i></a>
+      <span id="cart-count">0</span>
+    </div>
+    <div class="login">
+      <img src="/Photos/Home/user.png" alt="" height="3px"> <br><b>User</b>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="program.html">Home</a></li>
+      <li><a href="About.html">About Us</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="our story.html">Our Story</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">Registration ▾</a>
+        <div class="dropdown">
+          <a href="Registraion Farmer.html">Farmer Login</a>
+          <a href="Registraion Admin.html">Admin Login</a>
+          <a href="Registraion User.html">User Login</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <input type="text" id="search" placeholder="Search products...">
+    <select id="category">
+      <option value="all">All Categories</option>
+      <option value="fruits">Fruits</option>
+      <option value="vegetables">Vegetables</option>
+      <option value="grains">Grains</option>
+      <option value="Dairy Products">Dairy Products</option>
+    </select>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" id="product-list">
+    <div class="product" data-category="fruits">
+      <img src="./Photos/Products/pomogrant.jpg" alt="Pomegrantes">
+      <div class="product-content">
+        <h3>Fresh Organic Pomegrantes</h3>
+        <p>Sweet, crispy, and pesticide-free Pomegrantes straight from the farm.</p>
+        <div class="price">₹90 / kg</div>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+        <button onclick="addToCart('Pomegrantes', 80)">Add to Cart</button>
+
+      </div>
+    </div>
+
+    <div class="product" data-category="vegetables">
+      <img src="./Photos/Products/tomato.jpg" alt="Tomato">
+      <div class="product-content">
+        <h3>Organic Tomatoes</h3>
+        <p>Juicy and fresh, grown with natural fertilizers only.</p>
+        <div class="price">₹60 / kg</div>
+        <button onclick="addToCart('Tomato', 60)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product" data-category="fruits">
+      <img src="./Photos/Products/oranges.jpg" alt="oranges">
+      <div class="product-content">
+        <h3>Fresh Organic oranges</h3>
+        <p>Sweet, crispy, and pesticide-free oranges straight from the farm.</p>
+        <div class="price">₹130 / kg</div>
+        <button onclick="addToCart('Orange', 130)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product" data-category="grains">
+      <img src="./Photos/Products/rics.jpg" alt="Rice">
+      <div class="product-content">
+        <h3>Brown Rice</h3>
+        <p>Nutritious, high-fiber rice for a healthy lifestyle.</p>
+        <div class="price">₹80 / kg</div>
+        <button onclick="addToCart('Rice', 80)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="fruits">
+      <img src="./Photos/Products/mango.jpg" alt="Mangoes">
+      <div class="product-content">
+        <h3>Organic Mangoes</h3>
+        <p>Delicious and energy-packed Mangoes for everyday health.</p>
+        <div class="price">₹120 / dozen</div>
+        <button onclick="addToCart('Mango', 120)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="vegetables">
+      <img src="./Photos/Products/carrot.jpg" alt="Carrot">
+      <div class="product-content">
+        <h3>Organic Carrots</h3>
+        <p>Sweet, crunchy, and rich in Vitamin A.</p>
+        <div class="price">₹50 / kg</div>
+        <button onclick="addToCart('Carrots', 50)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="Dairy Products">
+      <img src="./Photos/Products/egg.jpg" alt="wheat">
+      <div class="product-content">
+        <h3>Organic Egg</h3>
+        <p>Delicious and energy-packed Egg for everyday health.</p>
+        <div class="price">₹100</div>
+        <button onclick="addToCart('Egg', 100)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="vegetables">
+      <img src="./Photos/Products/potato.jpg" alt="Potato">
+      <div class="product-content">
+        <h3>Organic Potato</h3>
+        <p>Sweet, crunchy, and rich in Vitamin A.</p>
+        <div class="price">₹30 / kg</div>
+        <button onclick="addToCart('Potato', 30)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+
+    <div class="product" data-category="fruits">
+      <img src="./Photos/Products/Bananas.jpg" alt="Banana">
+      <div class="product-content">
+        <h3>Organic Bananas</h3>
+        <p>Delicious and energy-packed bananas for everyday health.</p>
+        <div class="price">₹40 / dozen</div>
+        <button onclick="addToCart('Banana', 40)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="grains">
+      <img src="./Photos/Products/wheat1.jpg" alt="wheat">
+      <div class="product-content">
+        <h3>Organic wheat</h3>
+        <p>Delicious and energy-packed wheat for everyday health.</p>
+        <div class="price">₹60</div>
+        <button onclick="addToCart('wheat', 60)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product" data-category="Dairy Products">
+      <img src="./Photos/Products/milk.jpg" alt="wheat">
+      <div class="product-content">
+        <h3>Organic Fresh cow milk</h3>
+        <p>Delicious and energy-packed Milk for everyday health.</p>
+        <div class="price">₹40/litter</div>
+        <button onclick="addToCart('Milk', 40)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+    <div class="product" data-category="grains">
+      <img src="./Photos/Products/bajara.jpg" alt="wheat">
+      <div class="product-content">
+        <h3>Organic Bajara</h3>
+        <p>Delicious and energy-packed Bajara for everyday health.</p>
+        <div class="price">₹90</div>
+        <button onclick="addToCart('Bajara', 90)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="Dairy Products">
+      <img src="./Photos/Products/curd.jpg" alt="curd">
+      <div class="product-content">
+        <h3>Organic Fresh Cow Curd</h3>
+        <p>Delicious and energy-packed Curd for everyday health.</p>
+        <div class="price">₹30/litter</div>
+        <button onclick="addToCart('Curd', 30)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+
+    <div class="product" data-category="vegetables">
+      <img src="./Photos/Products/onion.jpg" alt="Potato">
+      <div class="product-content">
+        <h3>Organic Onion</h3>
+        <p>Sweet, crunchy, and rich in Vitamin A.</p>
+        <div class="price">₹30 / kg</div>
+        <button onclick="addToCart('Onion', 30)">Add to Cart</button>
+        <!-- <a href="#" class="btn">Add to Cart</a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-details" id="cart-details" style="display:none;">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <h3>Total: ₹<span id="cart-total">0</span></h3>
+    <!-- <div id="paypal-button-container"></div> -->
+    <center><button ><a href="Pay Now.html">Pay Now</a></button></center>
+  </div>
+
+
+  <!-- Footer -->
+ <footer>
+    <div class="Footers">
+
+        <div class="Footer social">
+            <a href="#"><img src="./Photos/Gmail.jpg" alt="Gmail"></a>
+            <a href="#"><img src="./Photos/Facebook.jpg" alt="Facebook"></a>
+            <a href="#"><img src="./Photos/Twitter.jpg" alt="Twitter"></a>
+            <a href="#"><img src="./Photos/youtube.jpg" alt="YouTube"></a>
+        </div>
+
+        <div class="Footer copy">
+            <p>© 2025 Organic Food Factory | All Rights Reserved</p>
+        </div>
+
+    </div>
+</footer>
+  <!-- JS for Search and Filter -->
+  <script>
+    const searchInput = document.getElementById("search");
+    const categorySelect = document.getElementById("category");
+    const products = document.querySelectorAll(".product");
+
+    function filterProducts() {
+      const searchValue = searchInput.value.toLowerCase();
+      const categoryValue = categorySelect.value;
+
+      products.forEach(product => {
+        const title = product.querySelector("h3").textContent.toLowerCase();
+        const productCategory = product.getAttribute("data-category");
+
+        if ((title.includes(searchValue) || searchValue === "") &&
+          (categoryValue === "all" || categoryValue === productCategory)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", filterProducts);
+    categorySelect.addEventListener("change", filterProducts);
+
+
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      total += price;
+      document.getElementById('cart-count').innerText = cart.length;
+      updateCartDetails();
+    }
+
+    function updateCartDetails() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = "";
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ₹${item.price}`;
+        cartItems.appendChild(li);
+      });
+      document.getElementById('cart-total').innerText = total;
+    }
+
+    function toggleCart() {
+      const cartDiv = document.getElementById('cart-details');
+      cartDiv.style.display = cartDiv.style.display === "none" ? "block" : "none";
+    }
+   src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"
+
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+        amount: {value: '6.00' } // ₹499 ≈ $6 USD for demo
+        }]
+      });
+    },
+      onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Payment completed by ' + details.payer.name.given_name + '!');
+      });
+    }
+  }).render('#paypal-button-container');
+  </script>
+
+</body>
+
+</html>
